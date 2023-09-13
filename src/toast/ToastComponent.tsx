@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
-import { Animated, PanResponder, StyleSheet, Text, View } from 'react-native'
+import { Animated, PanResponder, Text, View } from 'react-native'
 import { useToast } from './ToastContext'
+import classNames from 'classnames'
 
 type ToastType = 'info' | 'error' | 'success'
 
@@ -122,70 +123,36 @@ const ToastComponent: React.FC<Props> = ({
     return (
         <Animated.View
             {...(index === 0 ? panResponder.panHandlers : {})}
+            className="absolute mx-4 mt-4 flex-row items-center rounded-2xl bg-white p-2.5 shadow-md shadow-black"
             style={[
-                styles.toast,
+                {
+                    zIndex: index === 0 ? 100 : 99 - index,
+                },
+
                 {
                     transform: [
                         { translateY: Animated.add(translateY, offsetValue) },
                         { translateX: shakeAnimation },
                         { scale: scaleValue },
                     ],
-                }
-            ]}
+                }]}
         >
-            <View style={[styles.leftLine, styles[`${type}Line`]]}></View>
+            <View
+                className={classNames(
+                    'mr-3 h-full w-1',
+                    type === 'info' && 'bg-blue-500',
+                    type === 'error' && 'bg-red-500',
+                    type === 'success' && 'bg-green-500'
+                )}
+            ></View>
             <View style={{ flex: 1 }}>
-                <Text style={[styles.title]}>{text1}</Text>
-                {text2 && <Text style={styles.subtitle}>{text2}</Text>}
+                <Text className="text-[13px] font-bold text-gray-900">{text1}</Text>
+                {text2 && (
+                    <Text className="mt-0.5 text-[11px] text-gray-600">{text2}</Text>
+                )}
             </View>
-        </Animated.View >
+        </Animated.View>
     )
 }
 
 export default ToastComponent
-
-const styles = StyleSheet.create({
-    toast: {
-        position: 'absolute',
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginTop: 16, // To position it from the top
-        marginLeft: 16, // Add some margin from the sides
-        marginRight: 16,
-        padding: 10, // Reduced padding to make it a bit smaller
-        borderRadius: 16, // Increased border-radius for bubble effect
-        backgroundColor: 'white', // off-white     
-        borderColor: 'transparent',
-        elevation: 5, // Add shadow for Android
-        shadowColor: '#000', // Add shadow for iOS
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.23,
-        shadowRadius: 2.62,
-    },
-    title: {
-        fontWeight: 'bold',
-        fontSize: 13,
-        color: '#333', // dark gray
-    },
-    subtitle: {
-        marginTop: 2,
-        fontSize: 11,
-        color: '#666', // gray
-    },
-    leftLine: {
-        width: 4,
-        height: '100%', // Take the full height of the parent toast
-        marginRight: 15, // Add some space between the line and the content
-    },
-    infoLine: {
-        backgroundColor: 'blue',
-    },
-    errorLine: {
-        backgroundColor: 'red',
-    },
-    successLine: {
-        backgroundColor: 'green',
-    },
-})
-
-

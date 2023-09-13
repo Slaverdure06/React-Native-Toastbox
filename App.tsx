@@ -16,7 +16,6 @@ const DemoComponent: React.FC = () => {
               type: 'info',
               text1: 'Add location entry info',
               text2: 'Add info',
-              autoHide: false,
             })
           }
           color="blue"  // Button color
@@ -31,7 +30,6 @@ const DemoComponent: React.FC = () => {
               type: 'error',
               text1: 'Unable to add location entry',
               text2: 'Please try again later',
-              autoHide: false,
             })
           }
           color="red"  // Button color
@@ -46,7 +44,6 @@ const DemoComponent: React.FC = () => {
               type: 'success',
               text1: 'Able to add location entry',
               text2: 'Nice!',
-              autoHide: false,
             })
           }
           color="green"  // Button color

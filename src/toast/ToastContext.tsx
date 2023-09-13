@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react'
-import ToastWrapper from './ToastWrapper'
+import { ToastWrapper } from './ToastWrapper'
 
 // Type Definitions
 type ToastType = 'info' | 'error' | 'success'
