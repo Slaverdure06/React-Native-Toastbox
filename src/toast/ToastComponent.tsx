@@ -123,12 +123,8 @@ const ToastComponent: React.FC<Props> = ({
     return (
         <Animated.View
             {...(index === 0 ? panResponder.panHandlers : {})}
-            className="absolute mx-4 mt-4 flex-row items-center rounded-2xl bg-white p-2.5 shadow-md shadow-black"
+            className="absolute mx-4 mt-4 flex-row items-center rounded-2xl bg-white p-2.5 shadow-xl shadow-black"
             style={[
-                {
-                    zIndex: index === 0 ? 100 : 99 - index,
-                },
-
                 {
                     transform: [
                         { translateY: Animated.add(translateY, offsetValue) },
