@@ -71,7 +71,7 @@ const ToastComponent: React.FC<Props> = ({
             useNativeDriver: true,
         }).start()
 
-        if (autoHide) {
+        if (index === 0 && autoHide) {
             visibilityTimeoutRef.current = setTimeout(
                 initiateDisappearAnimation,
                 visibilityTime
@@ -83,7 +83,8 @@ const ToastComponent: React.FC<Props> = ({
                 clearTimeout(visibilityTimeoutRef.current)
             }
         }
-    }, [])
+    }, [index, autoHide]);
+
 
     useEffect(() => {
         if (toastToShake === id) {
@@ -123,7 +124,7 @@ const ToastComponent: React.FC<Props> = ({
     return (
         <Animated.View
             {...(index === 0 ? panResponder.panHandlers : {})}
-            className="absolute mx-4 mt-4 flex-row items-center rounded-2xl bg-white p-2.5 shadow-xl shadow-black"
+            className="absolute mx-4 mt-4 flex-row items-center rounded-2xl bg-white p-2.5 shadow-md shadow-black"
             style={[
                 {
                     transform: [
