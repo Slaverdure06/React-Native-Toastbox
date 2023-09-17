@@ -8,11 +8,11 @@ export const ToastWrapper: React.FC = () => {
     const { toasts, hideToast } = useToast()
 
     return (
-        <View className="absolute inset-x-0 top-5 flex justify-center">
+        <View className="absolute inset-x-0 top-5 flex justify-center bg-transparent">
             {toasts.map((toast, index) => (
                 <ToastComponent
                     key={toast.id}
-                    {...toast}
+                    toast={toast}
                     index={toasts.length - 1 - index}  // reverse the index for styling
                     onDismiss={() => hideToast(toast.id)}
                 />
