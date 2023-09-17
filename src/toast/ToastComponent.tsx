@@ -1,28 +1,22 @@
-import React, { useEffect, useRef } from 'react'
-import { Animated, PanResponder, Text, View } from 'react-native'
-import { useToast } from './ToastContext'
+import React, { useEffect, useRef, useState } from 'react'
+import { Animated, Easing, PanResponder, Text, View } from 'react-native'
+import { Toast, useToast } from './ToastContext'
 import classNames from 'classnames'
 
-type ToastType = 'info' | 'error' | 'success'
-
 interface Props {
-    id: string
-    type?: ToastType
-    text1: string
-    text2?: string
-    autoHide?: boolean
-    visibilityTime?: number
+    toast: Toast
     onDismiss: () => void
     index: number
 }
 
+const defaultAnimationConfig = {
+    duration: 300,
+    tension: 60,
+    friction: 7,
+};
+
 const ToastComponent: React.FC<Props> = ({
-    id,
-    type = 'info',
-    text1,
-    text2,
-    autoHide = true,
-    visibilityTime = 3000,
+    toast: { id, type = 'info', text1, text2, autoHide = true, visibilityTime = 3000, animationConfig = defaultAnimationConfig },
     onDismiss,
     index,
 }) => {
@@ -31,6 +25,8 @@ const ToastComponent: React.FC<Props> = ({
     const scaleValue = useRef(new Animated.Value(1 - index * 0.1)).current
     const offsetValue = useRef(new Animated.Value(index * 10)).current
     const shakeAnimation = useRef(new Animated.Value(0)).current
+
+    const { duration, tension, friction } = { ...defaultAnimationConfig, ...animationConfig };
 
     const pan = useRef(new Animated.ValueXY()).current
     const visibilityTimeoutRef = useRef<NodeJS.Timeout | null>(null)
@@ -47,6 +43,7 @@ const ToastComponent: React.FC<Props> = ({
         ].map((config) =>
             Animated.timing(shakeAnimation, {
                 duration: 50,
+                easing: Easing.inOut(Easing.ease),
                 useNativeDriver: true,
                 ...config,
             })
@@ -58,7 +55,7 @@ const ToastComponent: React.FC<Props> = ({
     const initiateDisappearAnimation = () => {
         Animated.timing(translateY, {
             toValue: -45,
-            duration: 500,
+            duration: duration,
             useNativeDriver: true,
         }).start(onDismiss)
     }
@@ -66,8 +63,8 @@ const ToastComponent: React.FC<Props> = ({
     useEffect(() => {
         Animated.spring(translateY, {
             toValue: 45,
-            tension: 60,
-            friction: 7,
+            tension: tension,
+            friction: friction,
             useNativeDriver: true,
         }).start()
 

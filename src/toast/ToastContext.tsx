@@ -2,15 +2,20 @@ import React, { createContext, ReactNode, useContext, useState } from 'react'
 import { ToastWrapper } from './ToastWrapper'
 
 // Type Definitions
-type ToastType = 'info' | 'error' | 'success'
+export type ToastType = 'info' | 'error' | 'success'
 
-type Toast = {
+export type Toast = {
     id: string
     type?: ToastType
     text1: string
     text2?: string
     autoHide?: boolean
     visibilityTime?: number
+    animationConfig?: {
+        duration?: number;
+        tension?: number;
+        friction?: number;
+    };
 }
 
 type ToastContextType = {

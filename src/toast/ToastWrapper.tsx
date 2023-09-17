@@ -12,7 +12,7 @@ export const ToastWrapper: React.FC = () => {
             {toasts.map((toast, index) => (
                 <ToastComponent
                     key={toast.id}
-                    {...toast}
+                    toast={toast}
                     index={toasts.length - 1 - index}  // reverse the index for styling
                     onDismiss={() => hideToast(toast.id)}
                 />
