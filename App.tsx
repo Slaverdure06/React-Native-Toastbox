@@ -14,11 +14,11 @@ const DemoComponent: React.FC = () => {
             showToast({
               id: 'sample-toast-indo',
               type: 'info',
-              text1: 'Add location entry info',
+              text1: 'Sample Toast',
               text2: 'Add info',
             })
           }
-          color="blue"  // Button color
+          color="blue"
         />
       </View>
       <View style={styles.buttonContainer}>
@@ -28,11 +28,11 @@ const DemoComponent: React.FC = () => {
             showToast({
               id: 'sample-toast-error',
               type: 'error',
-              text1: 'Unable to add location entry',
+              text1: 'Unable to perform action',
               text2: 'Please try again later',
             })
           }
-          color="red"  // Button color
+          color="red"
         />
       </View>
       <View style={styles.buttonContainer}>
@@ -42,11 +42,11 @@ const DemoComponent: React.FC = () => {
             showToast({
               id: 'sample-toast-success',
               type: 'success',
-              text1: 'Able to add location entry',
+              text1: 'Able to perform action',
               text2: 'Nice!',
             })
           }
-          color="green"  // Button color
+          color="green"
         />
       </View>
     </View>
