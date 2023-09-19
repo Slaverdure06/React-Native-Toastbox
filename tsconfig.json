@@ -1,3 +1,26 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react-native",
+    "strict": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true, // Skip type checking of all declaration files (*.d.ts).
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "es6"
+    ],
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
 }
