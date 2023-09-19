@@ -25,15 +25,15 @@ A toast notification system for React Native applications. This system supports 
 
 ### Wrap your App with `ToastProvider`
 
-To get started, you must wrap your application (or the part of your application where you want to display toasts) with the `ToastProvider`.
+To get started, you must wrap the part of your application where you want to display toasts with the `ToastProvider`.
 
 ```tsx
 import { ToastProvider } from 'react-native-toastbox';
 
-function App() {
+function Section() {
   return (
     <ToastProvider>
-      {/* rest of your app */}
+      {/* children */}
     </ToastProvider>
   );
 }
