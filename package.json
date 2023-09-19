@@ -1,6 +1,6 @@
 {
   "name": "react-native-toastbox",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -38,17 +38,17 @@
   },
   "types": "./index.d.ts",
   "description": "A toast notification system for React Native applications. This system supports different types of toasts (`info`, `error`, and `success`) and has built-in animations to enhance user experience.",
-  "main": "./index.ts",
+  "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Slaverdure06/React-Native-Toastbox.githttps:.git"
+    "url": "git+https://github.com/Slaverdure06/React-Native-Toastbox.git"
   },
   "author": "Samuel Laverdure",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Slaverdure06/React-Native-Toastbox.githttps:/issues"
+    "url": "https://github.com/Slaverdure06/React-Native-Toastbox/issues"
   },
-  "homepage": "https://github.com/Slaverdure06/React-Native-Toastbox.githttps:#readme",
+  "homepage": "https://github.com/Slaverdure06/React-Native-Toastbox.git",
   "keywords": [
     "react-native",
     "toast"
