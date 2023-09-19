@@ -1,0 +1,5 @@
+node_modules/
+*.log
+**/__tests__/*
+android/
+package-lock.json
