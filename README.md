@@ -44,7 +44,7 @@ function Section() {
 Wherever you want to display a toast, use the `useToast` hook.
 
 ```tsx
-import { useToast } from './path-to-your-toast-files';
+import { useToast } from 'react-native-toastbox';
 
 function MyComponent() {
   const { showToast, hideToast } = useToast();
