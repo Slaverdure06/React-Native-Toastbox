@@ -1,11 +1,41 @@
-declare module 'react-native-toastbox' {
-    import { FC } from 'react';
-    import { Toast } from './src/toast/ToastContext'
+import { FC, ReactNode } from 'react';
 
-    export const ToastProvider: FC<{ children: React.ReactNode }>;
+// Toast Component
+interface ToastProps {
+    toast: Toast;
+    onDismiss: () => void;
+    index: number;
+}
 
-    export function useToast(): {
-        showToast: (toast: Toast) => void;
-        hideToast: (id: string) => void;
+export const ToastComponent: FC<ToastProps>;
+
+// ToastWrapper Component
+export const ToastWrapper: FC;
+
+// ToastContext and Provider
+export type ToastType = 'info' | 'error' | 'success';
+
+export interface Toast {
+    id: string;
+    type?: ToastType;
+    text1: string;
+    text2?: string;
+    autoHide?: boolean;
+    visibilityTime?: number;
+    animationConfig?: {
+        duration?: number;
+        tension?: number;
+        friction?: number;
     };
 }
+
+interface ToastContextType {
+    toasts: Toast[];
+    showToast: (toast: Toast) => void;
+    hideToast: (id: string) => void;
+    toastToShake: string | null;
+}
+
+export const ToastProvider: FC<{ children: ReactNode }>;
+
+export const useToast: () => ToastContextType;
